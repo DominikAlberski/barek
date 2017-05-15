@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: MyString
+  region: MyString
+  type: 
+  cask: MyString
+  description: MyText
+
+two:
+  age: MyString
+  region: MyString
+  type: 
+  cask: MyString
+  description: MyText

@@ -1,0 +1,14 @@
+<h1>Alcoholes#new</h1>
+<p>Find me in app/views/alcoholes/new.html.erb</p>
+
+<%= simple_form_for @alcohol do |f| %>
+  <%= f.input :name %>
+  <%= f.input :brand %>
+  <%= f.input :kind, required: true, collection: %w(vodka whiskey wine liqueur other) %>
+  <%= f.input :country %>
+  <%= f.input :alk %>
+  <%= f.input :price %>
+  <%= f.input :photo %>
+  <%= f.button :submit %>
+<% end %>
+

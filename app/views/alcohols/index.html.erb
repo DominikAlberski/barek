@@ -1,0 +1,8 @@
+<h1>Alcohols#index</h1>
+<p>Find me in app/views/alcohols/index.html.erb</p>
+<%= link_to "Add new", new_alcohol_path %>
+<ul> Alcohols
+<% @alcohols.each do |alcohol| %>
+  <li><%= link_to alcohol.name, alcohol_path(alcohol[:id]) %></li>
+<% end %>
+</ul>
