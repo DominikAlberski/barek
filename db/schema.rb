@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515120403) do
+ActiveRecord::Schema.define(version: 20170516071302) do
 
   create_table "alcohols", force: :cascade do |t|
     t.string "name"
@@ -25,26 +25,24 @@ ActiveRecord::Schema.define(version: 20170515120403) do
     t.integer "user_id"
   end
 
-  create_table "cocktails", force: :cascade do |t|
+  create_table "coctails", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "photo"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cocktails_on_user_id"
+    t.index ["user_id"], name: "index_coctails_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "cocktail_id"
-    t.integer "alcohol_id"
-    t.integer "other_ingredient_id"
+    t.integer "coctail_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["alcohol_id"], name: "index_ingredients_on_alcohol_id"
-    t.index ["cocktail_id"], name: "index_ingredients_on_cocktail_id"
-    t.index ["other_ingredient_id"], name: "index_ingredients_on_other_ingredient_id"
+    t.integer "ingredient_kind_id"
+    t.string "ingredient_kind_type"
+    t.index ["coctail_id"], name: "index_ingredients_on_coctail_id"
   end
 
   create_table "liqueurs", force: :cascade do |t|

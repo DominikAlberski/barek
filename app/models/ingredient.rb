@@ -1,5 +1,4 @@
 class Ingredient < ApplicationRecord
   belongs_to :coctail
-  belongs_to :other_ingredient
-  belongs_to :alcohol
+  belongs_to :ingredient_kind, polymorphic: true 
 end
