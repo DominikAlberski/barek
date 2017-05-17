@@ -8,6 +8,9 @@ class OtherIngredientsController < ApplicationController
   end
 
   def new
+    if current_user.id != Coctail.find(params[:coctail_id]).user_id
+      redirect_to coctail_path(params[:coctail_id]) and return flash[:alert] = "You can't change other Users Coctails"
+    end 
     @coctail = current_user.coctails.find(params[:coctail_id])
     @other_ingredient = @coctail.other_ingredients.new
   end
@@ -20,7 +23,7 @@ class OtherIngredientsController < ApplicationController
       coctail.other_ingredients << @other_ingredient
       redirect_to coctail_path(params[:coctail_id])
     else
-      flash[:error] = "Somthing went wrong try again"
+      flash[:alert] = "Somthing went wrong try again"
       render new
     end
   end
