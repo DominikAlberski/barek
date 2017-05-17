@@ -1,2 +1,9 @@
 <h1>SimpleAlcohols#new</h1>
 <p>Find me in app/views/simple_alcohols/new.html.erb</p>
+
+<h3>Add alcohol to your Coctail</h3>
+<%= simple_form_for [@coctail, @simple_alcohol] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :kind, collection: %w(vodka whiskey wine liqueur rum tequila gin champagne brandy) %>
+  <%= f.submit %>
+<% end %>
