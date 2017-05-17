@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :vodkas, only: %I(new create)
   resources :coctails, only: %I(index show new create destroy) do
     resources :other_ingredients, only: %I(new create)
+    resources :simple_alcohols, only: %I(new create)
   end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

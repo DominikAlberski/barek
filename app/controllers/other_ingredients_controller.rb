@@ -8,7 +8,7 @@ class OtherIngredientsController < ApplicationController
   end
 
   def new
-    @coctail = Coctail.find(params[:coctail_id])
+    @coctail = current_user.coctails.find(params[:coctail_id])
     @other_ingredient = @coctail.other_ingredients.new
   end
 

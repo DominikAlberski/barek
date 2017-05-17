@@ -18,18 +18,5 @@ class CoctailsControllerTest < ActionDispatch::IntegrationTest
     get coctails_path
     assert_select 'a', text: 'Main site'
   end
-
-  test 'shuld get show' do
-    mohito = create(:coctail)
-    get coctail_path(mohito)
-    assert_response :success
-  end
-
-  test 'show shuld present 1 coctail' do
-    pinacolada = create(:coctail)
-    get coctail_path(pinacolada)
-    assert_select 'h3', text: pinacolada.name.capitalize
-  end
-
 end
 # 

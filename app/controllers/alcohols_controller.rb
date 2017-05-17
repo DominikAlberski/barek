@@ -1,4 +1,6 @@
 class AlcoholsController < ApplicationController
+  before_action :authenticate_user!, except: %I(index show)
+
   def index
     @alcohols = Alcohol.all
   end
@@ -9,12 +11,11 @@ class AlcoholsController < ApplicationController
   end
 
   def new
-    @alcohol = Alcohol.new
+    @alcohol = current_user.alcohols.new
   end
 
   def create
-    shelf = Shelf.create(quantity: 1)
-    @alcohol = shelf.alcohols.new(alcohol_params)
+    @alcohol = current_user.alcohols.new(alcohol_params)
     if @alcohol.save
       flash[:notice] = "Utworzono alcohol"
       redirection(@alcohol.kind, 'create')

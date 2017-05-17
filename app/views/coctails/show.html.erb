@@ -1,8 +1,9 @@
 <h1>Coctails#show</h1>
 <p>Find me in app/views/coctails/show.html.erb</p>
 <h3><%= @coctail.name.capitalize %></h3>
-<%= link_to "Add alcohol", new_alcohol_path %> || 
+<%= link_to "Add alcohol", new_coctail_alcohol_path(@coctail) %> || 
 <%= link_to "Add other ingredient", new_coctail_other_ingredient_path(@coctail) %>
+<p> Coctail description: <%= @coctail.description%></p>
 <ul>Ingredients:</ul>
 <% @coctail.other_ingredients.each do |ingredient| %>
   <li><%= ingredient.name %></li>
