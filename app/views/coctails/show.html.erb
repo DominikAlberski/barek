@@ -1,6 +1,8 @@
 <h1>Coctails#show</h1>
 <p>Find me in app/views/coctails/show.html.erb</p>
 
+<%= link_to "Main site", root_path %> || <%= link_to "Coctails list", coctails_path %>
+
 <h3><%= @coctail.name.capitalize %></h3>
 
 <%= link_to "Add alcohol", new_coctail_simple_alcohol_path(@coctail) %> || 
@@ -15,4 +17,3 @@
 <% @coctail.other_ingredients.each do |ingredient| %>
   <li><%= ingredient.name %></li>
 <% end %>
-

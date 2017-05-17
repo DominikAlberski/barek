@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517085520) do
+ActiveRecord::Schema.define(version: 20170517140505) do
+
+  create_table "Ingredients", force: :cascade do |t|
+    t.integer "coctail_id"
+    t.string "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ingredient_kind_id"
+    t.string "ingredient_kind_type"
+    t.index ["coctail_id"], name: "index_ingredients_on_coctail_id"
+  end
 
   create_table "alcohols", force: :cascade do |t|
     t.string "name"
@@ -33,16 +43,6 @@ ActiveRecord::Schema.define(version: 20170517085520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_coctails_on_user_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.integer "coctail_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "ingredient_kind_id"
-    t.string "ingredient_kind_type"
-    t.index ["coctail_id"], name: "index_ingredients_on_coctail_id"
   end
 
   create_table "liqueurs", force: :cascade do |t|
@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(version: 20170517085520) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "vodkas", force: :cascade do |t|

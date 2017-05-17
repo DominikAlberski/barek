@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :other_ingredients, only: %I(new create)
     resources :simple_alcohols, only: %I(new create)
   end
+  resources :ingredients, only: %I(edit update)
+  
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
