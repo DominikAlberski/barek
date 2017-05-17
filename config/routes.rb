@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'main#index'
   resources :alcohols, only: %I(index show new ceate)
   resources :vodkas, only: %I(new create)
-  resources :coctails, only: %I(index show new create destroy)
-  resources :other_ingredients, only: %I(new)
+  resources :coctails, only: %I(index show new create destroy) do
+    resources :other_ingredients, only: %I(new create)
+  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

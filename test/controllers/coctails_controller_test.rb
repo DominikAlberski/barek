@@ -10,8 +10,8 @@ class CoctailsControllerTest < ActionDispatch::IntegrationTest
     mohito = create(:coctail, name: 'Mohito')
     pinacolada = create(:coctail, name: "Pinacolada")
     get coctails_path
-    assert_select 'li', text: 'Mohito'
-    assert_select 'li', text: 'Pinacolada'
+    assert_select 'li', /Mohito.+/
+    assert_select 'li', /Pinacolada.+/
   end
 
   test "index shuld have link to main site" do
@@ -28,7 +28,8 @@ class CoctailsControllerTest < ActionDispatch::IntegrationTest
   test 'show shuld present 1 coctail' do
     pinacolada = create(:coctail)
     get coctail_path(pinacolada)
-    assert_select 'p', text: 'sample_coctail'
+    assert_select 'h3', text: pinacolada.name.capitalize
   end
+
 end
 # 
