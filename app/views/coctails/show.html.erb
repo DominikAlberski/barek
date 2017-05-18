@@ -11,9 +11,9 @@
 <p> Coctail description: <%= @coctail.description%></p>
 
 <ul>Ingredients:</ul>
-<% @coctail.simple_alcohols.each do |ingredient| %>
-  <li><%= ingredient.kind %></li>
+<% @coctail.simple_alcohols.each do |simple_alcohol| %>
+  <li><%= simple_alcohol.kind %> : <%= simple_alcohol.ingredients.first.quantity %></li>
 <% end %>
-<% @coctail.other_ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
+<% @coctail.other_ingredients.each do |other_ingredient| %>
+  <li><%= other_ingredient.name %> : <%= other_ingredient.ingredients.first.quantity %></li>
 <% end %>

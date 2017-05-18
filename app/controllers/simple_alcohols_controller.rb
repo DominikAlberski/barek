@@ -21,7 +21,8 @@ class SimpleAlcoholsController < ApplicationController
     if @simple_alcohol.save
       flash[:notice] = "Successfully added new alcohol"
       coctail.simple_alcohols << @simple_alcohol
-      redirect_to coctail_path(params[:coctail_id])
+      ingredient_id = coctail.ingredients.last
+      redirect_to edit_ingredient_path(ingredient_id) # formularz ustawiający ilość danego składnika
     else
       flash[:alert] = "Somthing went wrong try again"
       render new
