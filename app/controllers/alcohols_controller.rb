@@ -8,6 +8,8 @@ class AlcoholsController < ApplicationController
   def show
     @alcohol = Alcohol.find(params[:id])
     @details = details(@alcohol.kind)
+    @photo = @alcohol.photo.url(:medium)
+    @coctails = Coctail.with_simple_alcohol_kind(@alcohol.kind)
   end
 
   def new

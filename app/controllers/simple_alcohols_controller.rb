@@ -8,9 +8,8 @@ class SimpleAlcoholsController < ApplicationController
   end
 
   def new
-    if current_user.id != Coctail.find(params[:coctail_id]).user_id
-      redirect_to coctail_path(params[:coctail_id]) and return flash[:alert] = "You can't change other Users Coctails"
-    end 
+    coctail = Coctail.find(params[:coctail_id])
+    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     @coctail = current_user.coctails.find(params[:coctail_id])
     @simple_alcohol = @coctail.simple_alcohols.new
   end
@@ -29,13 +28,13 @@ class SimpleAlcoholsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    simple_alcohol = SimpleAlcohol.find(params[:id])
+    coctail = simple_alcohol.ingredients.first.coctail
+    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    simple_alcohol.destroy
+    flash[:notice] = "Successfully deleted ingredient"
+    redirect_to coctail_path(coctail)
   end
 
   private

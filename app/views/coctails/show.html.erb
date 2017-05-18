@@ -1,7 +1,4 @@
-<h1>Coctails#show</h1>
-<p>Find me in app/views/coctails/show.html.erb</p>
-
-<%= link_to "Main site", root_path %> || <%= link_to "Coctails list", coctails_path %>
+<h1>Coctails</h1>
 
 <h3><%= @coctail.name.capitalize %></h3>
 
@@ -12,8 +9,16 @@
 
 <ul>Ingredients:</ul>
 <% @coctail.simple_alcohols.each do |simple_alcohol| %>
-  <li><%= simple_alcohol.kind %> : <%= simple_alcohol.ingredients.first.quantity %></li>
+  <li>
+  <%= simple_alcohol.kind %> : <%= simple_alcohol.ingredients.first.quantity %> ||
+  <%= link_to "Edit", edit_ingredient_path(simple_alcohol.ingredients.first) %> ||
+  <%= link_to "Delete", simple_alcohol_path(simple_alcohol), method: :delete, data: { confirm: "Confirm delete?" } %>
+  </li>
 <% end %>
 <% @coctail.other_ingredients.each do |other_ingredient| %>
-  <li><%= other_ingredient.name %> : <%= other_ingredient.ingredients.first.quantity %></li>
+  <li>
+  <%= other_ingredient.name %> : <%= other_ingredient.ingredients.first.quantity %> || 
+  <%= link_to "Edit", edit_ingredient_path(other_ingredient.ingredients.first) %> ||
+  <%= link_to "Delete", other_ingredient_path(other_ingredient), method: :delete, data: { confirm: "Cofirm delete?" } %>
+  </li>
 <% end %>

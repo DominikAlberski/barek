@@ -24,22 +24,12 @@ class CoctailsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     coctail = Coctail.find(params[:id])
-    if current_user.id != coctail.user_id
-      flash[:notice] = "You can't delete other users Coctails"
-      redirect_to coctails_path
-    else
-      coctail.destroy
-      flash[:notice] = "Successfully deleted Coctail"
-      redirect_to coctails_path
-    end
+    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    coctail.destroy
+    flash[:notice] = "Successfully deleted Coctail"
+    redirect_to coctails_path
   end
 
   private

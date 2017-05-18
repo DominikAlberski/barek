@@ -13,13 +13,17 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       Loged as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> ||
       <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
       <% else %>
-      <%= link_to "Create account", new_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Create account", new_user_registration_path, :class => 'navbar-link' %> ||
       <%= link_to "Log in", new_user_session_path, :class => 'navbar-link' %>
     <% end %>
-
+    || 
+    <%= link_to "Main site", root_path, :class => 'navbar-link' %> || 
+    <%= link_to "Coctails list", coctails_path, :class => 'navbar-link' %> || 
+    <%= link_to "Alcohols list", alcohols_path, :class => 'navbar-link' %> ||
+    <%= link_to "Previous site", :back , :class => 'navbar-link' %>
     <%= yield %>
   </body>
 </html>
