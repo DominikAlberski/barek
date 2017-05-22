@@ -1,15 +1,9 @@
 class SimpleAlcoholsController < ApplicationController
   before_action :authenticate_user!, except: %I(index show)
 
-  def index
-  end
-
-  def show
-  end
-
   def new
     coctail = Coctail.find(params[:coctail_id])
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     @coctail = current_user.coctails.find(params[:coctail_id])
     @simple_alcohol = @coctail.simple_alcohols.new
   end
@@ -31,7 +25,7 @@ class SimpleAlcoholsController < ApplicationController
   def destroy
     simple_alcohol = SimpleAlcohol.find(params[:id])
     coctail = simple_alcohol.ingredients.first.coctail
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     simple_alcohol.destroy
     flash[:notice] = "Successfully deleted ingredient"
     redirect_to coctail_path(coctail)

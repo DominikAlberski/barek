@@ -1,0 +1,39 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+@import "bootstrap";
+@import "main";
+@import "alcoholes";
+@import "coctails";
+@import "ingredients";
+@import "other_ingredients";
+@import "simple_alcohols";
+@import "vodkas";
+
+body {
+  background: url('background2.jpeg') no-repeat fixed center;
+  background-size: 100% 100%;
+}
+
+.jumbotron {
+  background: rgba(187, 192, 201, 0.7)
+}
+
+footer {
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
+}

@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     # if current_user.id != coctail.user.id
     #   redirect_to coctail_path(coctail) and return false flash[:alert] = "You can't change other Users Coctails"
     # end
-    flash[:alert] = "You can't change other Users Coctails"
     current_user.id == coctail.user.id
   end
 

@@ -4,7 +4,7 @@
 
 <p> <%= @details %> </p>
 
-<%= image_tag @photo %>
+<%= image_tag @alcohol.photo.url, class: 'alcohol_img' %>
 
 <ul> Avalble coctails
 <% @coctails.each do |coctail| %>

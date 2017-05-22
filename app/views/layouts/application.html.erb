@@ -6,29 +6,48 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
   </head>
 
   <body>
-    <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    </div>
-    <div class="container-fluid" >
-      <% if user_signed_in? %>
-        Loged as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> ||
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-        <% else %>
-        <%= link_to "Create account", new_user_registration_path, :class => 'navbar-link' %> ||
-        <%= link_to "Log in", new_user_session_path, :class => 'navbar-link' %>
+    <header class="container">
+      <div class="row">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close"><%= notice %></a>        
+        </div>
       <% end %>
-      || 
-      <%= link_to "Main site", root_path, :class => 'navbar-link' %> || 
-      <%= link_to "Coctails list", coctails_path, :class => 'navbar-link' %> || 
-      <%= link_to "Alcohols list", alcohols_path, :class => 'navbar-link' %> ||
-      <%= link_to "Previous site", :back , :class => 'navbar-link' %>
-    </div>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close"><%= alert %></a>
+        </div>
+      <% end %>
+      </div>
+      <div class="row">     
+        <nav class="col-sm-12 text-right">
+          <%= link_to "Main site", root_path, :class => 'btn btn-info' %>
+          <%= link_to "Coctails list", coctails_path, :class => 'btn btn-info' %>
+          <%= link_to "Alcohols list", alcohols_path, :class => 'btn btn-info' %>
+          <%= link_to "Previous site", :back , :class => 'btn btn-info' %>
+        </nav>
+      </div>
+    </header>
+      
+  
+  <div class="jumbotron">
     <%= yield %>
+  </div>
+  <footer class="container">
+    <div class="row">
+      <% if user_signed_in? %>
+        <p> Loged as <strong> <%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn' %> </p>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'btn' %>
+      <% else %>
+        <%= link_to "Create account", new_user_registration_path, :class => 'btn' %>
+        <%= link_to "Log in", new_user_session_path, :class => 'btn' %>
+      <% end %>
+    </div>
+  </footer>
   </body>
 </html>

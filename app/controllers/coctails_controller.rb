@@ -26,7 +26,7 @@ class CoctailsController < ApplicationController
 
   def destroy
     coctail = Coctail.find(params[:id])
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     coctail.destroy
     flash[:notice] = "Successfully deleted Coctail"
     redirect_to coctails_path
@@ -35,7 +35,7 @@ class CoctailsController < ApplicationController
   private
 
   def coctail_params
-    params.require(:coctail).permit(:name, :description)
+    params.require(:coctail).permit(:name, :description, :image)
   end
 
 end

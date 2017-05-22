@@ -1,14 +1,15 @@
 <h1>Add Alcohole</h1>
 
-<%= simple_form_for @alcohol do |f| %>
-  <%= f.input :name %>
-  <%= f.input :brand %>
-  <%= f.input :kind, required: true, collection: %w(vodka whiskey wine liqueur other) %>
-  <%= f.input :country %>
-  <%= f.input :alk %>
-  <%= f.input :price %>
-  <%= f.input :photo %>
+<div class="form-inputs">
+  <%= simple_form_for @alcohol, defaults: { input_html: { class: 'form-inputs' } } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :brand %>
+    <%= f.input :kind, required: true, collection: %w(vodka whiskey wine liqueur other) %>
+    <%= f.input :country %>
+    <%= f.input :alk %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
 
-  <%= f.button :submit %>
-<% end %>
-
+    <%= f.button :submit %>
+  <% end %>
+</div>

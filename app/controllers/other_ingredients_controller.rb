@@ -3,7 +3,7 @@ class OtherIngredientsController < ApplicationController
 
   def new
     coctail = Coctail.find(params[:coctail_id])
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     @coctail = current_user.coctails.find(params[:coctail_id])
     @other_ingredient = @coctail.other_ingredients.new
   end
@@ -25,7 +25,7 @@ class OtherIngredientsController < ApplicationController
   def destroy
     other_ingredient = OtherIngredient.find(params[:id])
     coctail = other_ingredient.ingredients.first.coctail
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
     other_ingredient.destroy
     flash[:notice] = "Successfully deleted ingredient"
     redirect_to coctail_path(coctail)

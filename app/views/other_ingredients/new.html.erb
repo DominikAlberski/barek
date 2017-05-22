@@ -1,8 +1,7 @@
-<h1>OtherIngredients#new</h1>
-<p>Find me in app/views/other_ingredients/new.html.erb</p>
-
-<h3>Add ingredient to your coctail</h3>
-<%= simple_form_for [@coctail, @other_ingredient] do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Ingredients:</h1>
+    <%= simple_form_for [@coctail, @other_ingredient] do |f| %>
+      <%= f.input :name, input_html: {class: '.form-control'}  %>
+      <%= f.submit 'Add ingredient' %>
+    <% end %>
+</div>

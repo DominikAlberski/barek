@@ -1,8 +1,10 @@
-<h1>Alcohols</h1>
-
-<%= link_to "Add new", new_alcohol_path %>
-<ul> Alcohols
-<% @alcohols.each do |alcohol| %>
-  <li><%= link_to alcohol.name, alcohol_path(alcohol[:id]) %></li>
-<% end %>
-</ul>
+<div class="container">
+  <h1>Alcohols</h1>
+  
+  <%= link_to "Add new", new_alcohol_path, class: 'btn btn-info' %>
+  <ul> Alcohols
+  <% @alcohols.each do |alcohol| %>
+    <li><%= link_to alcohol.name, alcohol_path(alcohol[:id]), class: 'btn' %></li>
+  <% end %>
+  </ul>
+</div>

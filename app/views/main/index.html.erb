@@ -1,6 +1,14 @@
-<h1>Your Alcohol cabinet</h1>
-
-
-<p><%= link_to "Alcohols", alcohols_path %></p>
-<p><%= link_to "Coctails", coctails_path %></p>
+<div class="container">
+  <nav class="navbar navbar-defoult">
+    <div class="Container-fluid">
+      <div class="navbar-header">
+        <h1>Your Alcohol cabinet</h1>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Alcohols", alcohols_path, class: 'btn btn-info' %></li>
+        <li class="active"><%= link_to "Coctails", coctails_path, class: 'btn btn-info' %></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 

@@ -1,8 +1,7 @@
-<h1>Ingredients#edit</h1>
-<p>Find me in app/views/ingredients/edit.html.erb</p>
-
-<%= simple_form_for @ingredient do |f| %>
-  <%= @ingredient.ingredient_kind.name.capitalize %>:
-  <%= f.input :quantity %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= simple_form_for @ingredient do |f| %>
+    <h3><%= @ingredient.ingredient_kind.name.capitalize %>:</h3>
+    <%= f.input :quantity %>
+    <%= f.submit %>
+  <% end %>
+</div>

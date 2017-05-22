@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
   def edit
     @ingredient = Ingredient.find(params[:id])
     coctail = @ingredient.coctail
-    redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
   end
 
   def update
