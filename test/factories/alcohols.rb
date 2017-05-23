@@ -6,6 +6,6 @@ FactoryGirl.define do
     country "Poland"
     alk 40
     price 40.99
-    photo 'sample img or url'
+    association :user, factory: :user
   end
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'main/index'
   root 'main#index'
-  resources :alcohols, only: %I(index show new create)
+  resources :alcohols, only: %I(index show new create destroy)
   resources :vodkas, only: %I(new create)
   resources :coctails, only: %I(index show new create destroy) do
     resources :other_ingredients, only: %I(new create)

@@ -1,6 +1,6 @@
 # require 'test_helper'
 
-# class AlcoholesControllerTest < ActionDispatch::IntegrationTest
+class AlcoholesControllerTest < ActionDispatch::IntegrationTest
 #   test "should get index" do
 #     get alcoholes_index_url
 #     assert_response :success
@@ -31,9 +31,10 @@
 #     assert_response :success
 #   end
 
-#   test "should get destroy" do
-#     get alcoholes_destroy_url
-#     assert_response :success
-#   end
+  test "should delete destroy" do
+    sample = create(:alcohol)
+    delete alcohol_path(sample.id)
+    assert_response :success
+  end
 
-# end
+end

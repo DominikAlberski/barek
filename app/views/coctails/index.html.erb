@@ -3,7 +3,7 @@
 <p><%= link_to "New Coctail", new_coctail_path, class: 'btn btn-info' %></p>
 <ul>
 <% @coctails.each do |coctail| %>
-  <li> 
+  <li>
     <%= link_to coctail.name, coctail_path(coctail), class: 'btn btn-success' %>
     <%= link_to "delete", coctail_path(coctail), method: :delete, data: { confirm: "Cofirm delete?" }, class: 'btn btn-danger'  %>
   </li>
