@@ -4,7 +4,7 @@
   <%= link_to "Add new", new_alcohol_path, class: 'btn btn-info' %>
   <ul> Alcohols
   <% @alcohols.each do |alcohol| %>
-    <li><%= link_to alcohol.name, alcohol_path(alcohol[:id]), class: 'btn' %></li>
+    <li><%= link_to alcohol.name, alcohol_path(alcohol[:id]), class: 'btn btn-info' %> <%= link_to "delete", alcohol_path(alcohol[:id]), method: :delete,data: { confirm: "Cofirm delete?" }, class: 'btn btn-danger' %></li>
   <% end %>
   </ul>
 </div>

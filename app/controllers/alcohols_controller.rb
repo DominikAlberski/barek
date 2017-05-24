@@ -34,6 +34,11 @@ class AlcoholsController < ApplicationController
   end
 
   def destroy
+    alcohol = Alcohol.find(params[:id])
+    flash[:alert] = "You can't change other Users Alcohols" and redirect_to alcohol_path(alcohol) and return unless authorize_access?(alcohol)
+    alcohol.destroy
+    flash[:notice] = "Successfully deleted alcohol #{alcohol.name}"
+    redirect_to alcohols_path
   end
 
   protected
