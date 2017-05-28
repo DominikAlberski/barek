@@ -1,12 +1,12 @@
 class AlcoholsController < ApplicationController
   before_action :authenticate_user!, except: %I(index show)
+  before_action :set_alcohol, only: %I(show destroy)
 
   def index
     @alcohols = Alcohol.all
   end
 
   def show
-    @alcohol = Alcohol.find(params[:id])
     @details = details(@alcohol.kind)
     @photo = @alcohol.photo.url(:medium)
     @coctails = Coctail.with_simple_alcohol_kind(@alcohol.kind)
@@ -34,10 +34,9 @@ class AlcoholsController < ApplicationController
   end
 
   def destroy
-    alcohol = Alcohol.find(params[:id])
-    flash[:alert] = "You can't change other Users Alcohols" and redirect_to alcohol_path(alcohol) and return unless authorize_access?(alcohol)
-    alcohol.destroy
-    flash[:notice] = "Successfully deleted alcohol #{alcohol.name}"
+    flash[:alert] = "You can't change other Users Alcohols" and redirect_to alcohol_path(@alcohol) and return unless authorize_access?(@alcohol)
+    @alcohol.destroy
+    flash[:notice] = "Successfully deleted alcohol #{@alcohol.name}"
     redirect_to alcohols_path
   end
 
@@ -82,6 +81,10 @@ class AlcoholsController < ApplicationController
     else
       'No details availble'
     end
+  end
+
+  def set_alcohol
+    @alcohol = Alcohol.find(params[:id])
   end
 
   private

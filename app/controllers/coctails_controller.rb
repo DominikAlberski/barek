@@ -1,13 +1,12 @@
 class CoctailsController < ApplicationController
   before_action :authenticate_user!, except: %I(index show)
+  before_action :set_coctail, only: %I(show destroy)
 
   def index
     @coctails = Coctail.all
   end
 
-  def show
-    @coctail = Coctail.find(params[:id])
-  end
+  def show; end
 
   def new
     @coctail = current_user.coctails.new
@@ -25,11 +24,16 @@ class CoctailsController < ApplicationController
   end
 
   def destroy
-    coctail = Coctail.find(params[:id])
-    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)
-    coctail.destroy
+    flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(@coctail) and return unless authorize_access?(@coctail)
+    @coctail.destroy
     flash[:notice] = "Successfully deleted Coctail"
     redirect_to coctails_path
+  end
+
+  protected
+
+  def set_coctail
+    @coctail = Coctail.find(params[:id])
   end
 
   private
