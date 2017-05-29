@@ -1,15 +1,14 @@
 <h1>Coctails</h1>
 
-<h3><%= @coctail.name.capitalize %></h3>
+<h3><%= link_to @coctail.name.capitalize, edit_coctail_path(@coctail) %></h3>
 
-<%= link_to "Add alcohol", new_coctail_simple_alcohol_path(@coctail), class: 'btn btn-info' %>
-<%= link_to "Add other ingredient", new_coctail_other_ingredient_path(@coctail), class: 'btn btn-info' %>
 
 <p> Coctail description: <%= @coctail.description%></p>
 
 <%= image_tag @coctail.image.url, class: 'coctail_img' %>
 
-<ul>Ingredients:</ul>
+<ul><h5>Ingredients:</h5></ul>
+
 <% @coctail.simple_alcohols.each do |simple_alcohol| %>
   <li>
   <%= simple_alcohol.kind %> : <%= simple_alcohol.ingredients.first.quantity %>
@@ -24,3 +23,5 @@
   <%= link_to "Delete", other_ingredient_path(other_ingredient), method: :delete, data: { confirm: "Cofirm delete?" }, class: 'btn btn-danger btn-md' %>
   </li>
 <% end %>
+<%= link_to "Add alcohol", new_coctail_simple_alcohol_path(@coctail), class: 'btn btn-info' %>
+<%= link_to "Add other ingredient", new_coctail_other_ingredient_path(@coctail), class: 'btn btn-info' %>

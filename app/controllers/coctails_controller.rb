@@ -1,6 +1,6 @@
 class CoctailsController < ApplicationController
   before_action :authenticate_user!, except: %I(index show)
-  before_action :set_coctail, only: %I(show destroy)
+  before_action :set_coctail, only: %I(show destroy edit update)
 
   def index
     @coctails = Coctail.all
@@ -20,6 +20,20 @@ class CoctailsController < ApplicationController
     else
       flash[:error] = "Something went wrong try again"
       render new
+    end
+  end
+
+  def edit
+    flash[:alert] = "You can't change other Users Coctails" and render :show and return unless authorize_access?(@coctail)
+  end
+
+  def update
+    if @coctail.update(coctail_params)
+      flash[:notice] = "Successfully edited Coctail"
+      redirect_to coctail_path(@coctail)
+    else
+      flash[:alert] = "Something went wrong try again"
+      render :edit
     end
   end
 

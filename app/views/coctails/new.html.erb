@@ -1,8 +1,4 @@
 <h1>Create your Coctail</h1>
 
-<%= simple_form_for @coctail do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :image, as: :file %>
-  <%= f.submit %>
-<% end %>
+<%= render partial: 'coctail_form', locals: { coctail:
+@coctail } %>
