@@ -9,6 +9,12 @@
     <%= f.input :alk %>
     <%= f.input :price %>
     <%= f.input :photo, as: :file %>
+    <%= f.simple_fields_for :vodka do |v| %>
+        <%= v.input :kind, label: "vodka_kind" %>
+    <% end %>
+    <%= f.simple_fields_for :liqueur do |l| %>
+        <%= l.input :kind, label: "liqueur_kind" %>
+    <% end %>
 
     <%= f.button :submit %>
   <% end %>

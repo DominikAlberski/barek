@@ -14,13 +14,16 @@ class AlcoholsController < ApplicationController
 
   def new
     @alcohol = current_user.alcohols.new
+    @alcohol.build_vodka
+    @alcohol.build_liqueur
   end
 
   def create
     @alcohol = current_user.alcohols.new(alcohol_params)
     if @alcohol.save
       flash[:notice] = "Utworzono alcohol"
-      redirection(@alcohol.kind, 'create')
+      redirect_to alcohol_path(@alcohol)
+      # redirection(@alcohol.kind, 'create')
     else
       flash[:error] = "Nie udało się zapisać"
       render :new
@@ -87,6 +90,7 @@ class AlcoholsController < ApplicationController
   private
 
   def alcohol_params
-    params.require(:alcohol).permit(:name, :brand, :kind, :country, :alk, :price, :photo)
+    params.require(:alcohol).permit(:name, :brand, :kind, :country, :alk, :price, :photo,
+      vodka_attributes: [:kind], liqueur_attributes: [:kind])
   end
 end
