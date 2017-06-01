@@ -16,6 +16,8 @@ class AlcoholsController < ApplicationController
     @alcohol = current_user.alcohols.new
     @alcohol.build_vodka
     @alcohol.build_liqueur
+    @alcohol.build_wine
+    @alcohol.build_whiskey
   end
 
   def create

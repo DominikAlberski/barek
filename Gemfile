@@ -10,6 +10,7 @@ gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
 gem 'erubis'
 gem 'jquery-rails', "~> 4.3.1"
 gem 'jquery-ui-rails'
+gem 'tether-rails'
 gem "paperclip", "~> 3.1"
 # gem for simple_form
 gem 'country_select'
