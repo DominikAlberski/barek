@@ -48,34 +48,34 @@ class AlcoholsController < ApplicationController
 
   protected
 
-  def redirection(kind, action = '')
-    case action
-    when 'create'
-      case kind
-      when 'vodka' then redirect_to new_vodka_path
-      when 'whiskey' then redirect_to new_whiskey_path
-      when 'wine' then redirect_to new_wine_path
-      when 'liqueur' then redirect_to new_liqueur_path
-      when 'other' then redirect_to new_other_path
-      end
-    when 'edit'
-      case kind
-      when 'vodka' then redirect_to edit_vodka_path
-      when 'whiskey' then redirect_to edit_whiskey_path
-      when 'wine' then redirect_to edit_wine_path
-      when 'liqueur' then redirect_to edit_liqueur_path
-      when 'other' then redirect_to edit_other_path
-      end
-    when ''
-      case kind
-      when 'vodka' then redirect_to vodka_path
-      when 'whiskey' then redirect_to whiskey_path
-      when 'wine' then redirect_to wine_path
-      when 'liqueur' then redirect_to liqueur_path
-      when 'other' then redirect_to other_path
-      end
-    end
-  end
+  # def redirection(kind, action = '')
+  #   case action
+  #   when 'create'
+  #     case kind
+  #     when 'vodka' then redirect_to new_vodka_path
+  #     when 'whiskey' then redirect_to new_whiskey_path
+  #     when 'wine' then redirect_to new_wine_path
+  #     when 'liqueur' then redirect_to new_liqueur_path
+  #     when 'other' then redirect_to new_other_path
+  #     end
+  #   when 'edit'
+  #     case kind
+  #     when 'vodka' then redirect_to edit_vodka_path
+  #     when 'whiskey' then redirect_to edit_whiskey_path
+  #     when 'wine' then redirect_to edit_wine_path
+  #     when 'liqueur' then redirect_to edit_liqueur_path
+  #     when 'other' then redirect_to edit_other_path
+  #     end
+  #   when ''
+  #     case kind
+  #     when 'vodka' then redirect_to vodka_path
+  #     when 'whiskey' then redirect_to whiskey_path
+  #     when 'wine' then redirect_to wine_path
+  #     when 'liqueur' then redirect_to liqueur_path
+  #     when 'other' then redirect_to other_path
+  #     end
+  #   end
+  # end
 
   def details(det)
     case det
@@ -93,6 +93,6 @@ class AlcoholsController < ApplicationController
 
   def alcohol_params
     params.require(:alcohol).permit(:name, :brand, :kind, :country, :alk, :price, :photo,
-      vodka_attributes: [:kind], liqueur_attributes: [:kind])
+      vodka_attributes: [:kind], liqueur_attributes: [:kind], wine_attributes: [:kind, :color], whiskey_attributes: [:kind, :region, :age, :cask, :descryption])
   end
 end

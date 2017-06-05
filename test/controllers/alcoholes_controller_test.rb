@@ -2,10 +2,6 @@ require 'test_helper'
 
 
 class AlcoholesControllerTest < ActionDispatch::IntegrationTest
-#   test "should get index" do
-#     get alcoholes_index_url
-#     assert_response :success
-#   end
 
   test "should get show response success" do
     sample = create(:alcohol)
@@ -25,20 +21,14 @@ class AlcoholesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-#   test "should get create" do
-#     get alcoholes_create_url
-#     assert_response :success
-#   end
+  test "user shuld be able to create alcohol" do
+    sign_in create(:user)
+    alcohol = { alcohol: {name: 'sample 1', brand: 'sample brand', kind: 'wine' }}
+    post alcohols_path alcohol
+    assert_response :redirect 
+    assert_not_nil(Alcohol.find_by name: 'sample 1', kind: "wine")
+  end
 
-#   test "should get edit" do
-#     get alcoholes_edit_url
-#     assert_response :success
-#   end
-
-#   test "should get update" do
-#     get alcoholes_update_url
-#     assert_response :success
-#   end
 
   test "sign_in user shuld not be able to delete other user alcohol and set proper flash msg." do
     other_user_alcohol = create(:alcohol)

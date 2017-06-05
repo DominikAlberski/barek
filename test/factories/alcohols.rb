@@ -5,7 +5,7 @@ FactoryGirl.define do
     kind "vodka"
     country "Poland"
     alk 40
-    price 40.99
+    price 40
     association :user, factory: :user
   end
 end
