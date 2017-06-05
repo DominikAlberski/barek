@@ -11,6 +11,7 @@ gem 'erubis'
 gem 'jquery-rails', "~> 4.3.1"
 gem 'jquery-ui-rails'
 gem 'tether-rails'
+# gem 'jquery-turbolinks'
 gem "paperclip", "~> 3.1"
 # gem for simple_form
 gem 'country_select'

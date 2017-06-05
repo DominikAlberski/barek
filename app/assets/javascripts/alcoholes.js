@@ -38,5 +38,5 @@ $(document).ready(function() {
     }
   });
 
-
+console.log('koniec kodu');
 });
