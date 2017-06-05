@@ -8,3 +8,15 @@ It also alows user to check what kind of coctails could be made from alcohol in 
 
 Core functionalitys are done but application is still under develop.
 
+Things to do:
+
+edit alcohol action
+
+edit coctail action
+
+change alcohol index to show only curent user alcohols when user is sign in with option to see all alcohols
+
+change coctail index similar to alcohol index
+
+add posibility for coping other users alcohols / coctails
+
