@@ -1,11 +1,15 @@
-<h1>Alcoholes</h1>
-
-<p> <%= @alcohol.name %> </p>
-
-<p> <%= @details %> </p>
-
-<%= image_tag @alcohol.photo.url, class: 'alcohol_img' %>
-
+<header>
+  <h1>Alcoholes</h1>
+</header>
+<div class="name"> 
+  <%= link_to @alcohol.name, edit_alcohol_path(@alcohol) %> </p>
+</div>
+<div class="details">
+  <p> <%= @details %> </p>
+</div>
+<div class='photo'>
+  <%= image_tag @alcohol.photo.url, class: 'alcohol_img' %>
+</div>
 <ul> Avalble coctails
 <% @coctails.each do |coctail| %>
   <li><%= link_to coctail.name, coctail_path(coctail) %></li>
