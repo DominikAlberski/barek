@@ -33,6 +33,7 @@ class AlcoholsController < ApplicationController
   end
 
   def edit
+    @alcohol = Alcohol.find(params[:id])
   end
 
   def update
