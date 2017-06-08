@@ -1,0 +1,29 @@
+<div class="form-inputs">
+  <%= simple_form_for alcohol do |f| %>
+    <%= f.input :name %>
+    <%= f.input :brand %>
+    <%= f.input :kind, required: true, collection: %w(vodka whiskey wine liqueur other) %>
+    <%= f.input :country %>
+    <%= f.input :alk %>
+    <%= f.input :price %>
+    <%= f.input :photo, as: :file %>
+    <%= f.simple_fields_for :vodka do |v| %>
+        <%= v.input :kind, label: "typy of vodka", wrapper_html: { class: 'vodka hidden' } %>
+    <% end %>
+    <%= f.simple_fields_for :liqueur do |l| %>
+        <%= l.input :kind, label: "type of liqueur", wrapper_html: { class: 'liqueur hidden' } %>
+    <% end %>
+    <%= f.simple_fields_for :wine do |wi| %>
+        <%= wi.input :kind, label: "type of wine", wrapper_html: { class: 'wine hidden' } %>
+        <%= wi.input :color, wrapper_html: { class: 'wine hidden' }  %>
+    <% end %>
+    <%= f.simple_fields_for :whiskey do |w| %>
+        <%= w.input :kind, label: "type of whiskey", wrapper_html: { class: 'whiskey hidden' } %>
+        <%= w.input :region, label: "region of the cuntry", wrapper_html: { class: 'whiskey hidden' }  %>
+        <%= w.input :age, wrapper_html: { class: 'whiskey hidden' } %>
+        <%= w.input :cask, label: 'cask No.', wrapper_html: { class: 'whiskey hidden' }  %>
+        <%= w.input :description, wrapper_html: { class: 'whiskey hidden' } %>
+    <% end %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
