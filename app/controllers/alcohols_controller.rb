@@ -23,20 +23,28 @@ class AlcoholsController < ApplicationController
   def create
     @alcohol = current_user.alcohols.new(alcohol_params)
     if @alcohol.save
-      flash[:notice] = "Utworzono alcohol"
+      flash[:notice] = 'Alcohol created'
       redirect_to alcohol_path(@alcohol)
       # redirection(@alcohol.kind, 'create')
     else
-      flash[:error] = "Nie udało się zapisać"
-      render :new
+      flash[:error] = 'Something went wrong, try again'
     end
   end
 
   def edit
     @alcohol = Alcohol.find(params[:id])
+    flash[:alert] = "You can't change other Users Alcohols" and redirect_to alcohol_path(@alcohol) and return unless authorize_access?(@alcohol)
   end
 
   def update
+    @alcohol = Alcohol.find(params[:id])
+    if @alcohol.update(alcohol_params)
+      flash[:notice] = "Alcohol was updated"
+      redirect_to alcohol_path(@alcohol)
+    else
+      flash[:error] = "Something went wrong, try again"
+      render :edit
+    end
   end
 
   def destroy

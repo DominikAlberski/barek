@@ -69,10 +69,28 @@ class AlcoholesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', alcohol.name
   end
 
-  test 'edit shuld show proper form with valius' do
+  test 'edit shuld show proper form with values' do
     alcohol = create(:alcohol)
     sign_in alcohol.user
     get edit_alcohol_path(alcohol)
     assert_select 'label', 'Name'
+  end
+
+  test 'sign_in user shuld not be able to edit other user alcohol and set proper flash msg.' do
+    other_user_alcohol = create(:alcohol)
+    sign_in create(:user)
+    get edit_alcohol_path(other_user_alcohol)
+    assert_response :redirect
+    assert_equal("You can't change other Users Alcohols", flash[:alert])
+  end
+
+  test 'update shuld response redirect if success' do
+    alcohol = create(:alcohol)
+    alcohol_update = { alcohol: { name: 'sample_update 1' } }
+    sign_in alcohol.user
+    patch alcohol_path(alcohol, alcohol_update)
+    assert_response :redirect
+    assert_equal('Alcohol was updated', flash[:notice])
+    assert_equal('sample_update 1', Alcohol.find(alcohol.id).name)
   end
 end
