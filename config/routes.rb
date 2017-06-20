@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'main/index'
   root 'main#index'
   resources :alcohols
-  resources :vodkas, only: %I(new create)
+  # resources :vodkas, only: %I(new create)
   resources :coctails do
     resources :other_ingredients, only: %I(new create)
     resources :simple_alcohols, only: %I(new create)

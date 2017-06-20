@@ -12,10 +12,6 @@ Things to do:
 
 edit alcohol JS update to show fileds for current alcohol kind
 
-edit coctail action
-
-update coctail action
-
 when creating an alcohol user shuld not be able to crete 2 difrent kinds of alcohols for 1 alcohol
 
 alcohol index view display
