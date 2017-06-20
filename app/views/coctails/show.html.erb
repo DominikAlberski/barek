@@ -1,6 +1,6 @@
-<h1>Coctails</h1>
+<h1>Coctail</h1>
 
-<h3><%= @coctail.name.capitalize %></h3>
+<h3><%= link_to @coctail.name.capitalize, edit_coctail_path(@coctail) %></h3>
 
 <%= link_to "Add alcohol", new_coctail_simple_alcohol_path(@coctail), class: 'btn btn-info' %>
 <%= link_to "Add other ingredient", new_coctail_other_ingredient_path(@coctail), class: 'btn btn-info' %>

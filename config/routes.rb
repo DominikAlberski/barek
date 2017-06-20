@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'main#index'
   resources :alcohols
   resources :vodkas, only: %I(new create)
-  resources :coctails, only: %I(index show new create destroy) do
+  resources :coctails do
     resources :other_ingredients, only: %I(new create)
     resources :simple_alcohols, only: %I(new create)
   end

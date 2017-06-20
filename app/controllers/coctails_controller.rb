@@ -24,6 +24,21 @@ class CoctailsController < ApplicationController
     end
   end
 
+  def edit
+    @coctail = Coctail.find(params[:id])
+  end
+
+  def update
+    @coctail = Coctail.find(params[:id])
+    if @coctail.update(coctail_params)
+      flash[:notice] = 'Coctail was updated'
+      redirect_to coctail_path(@coctail)
+    else
+      flash[:error] = "Something went wrong, try again"
+      render :edit
+    end
+  end
+
   def destroy
     coctail = Coctail.find(params[:id])
     flash[:alert] = "You can't change other Users Coctails" and redirect_to coctail_path(coctail) and return unless authorize_access?(coctail)

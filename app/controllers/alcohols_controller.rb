@@ -39,7 +39,7 @@ class AlcoholsController < ApplicationController
   def update
     @alcohol = Alcohol.find(params[:id])
     if @alcohol.update(alcohol_params)
-      flash[:notice] = "Alcohol was updated"
+      flash[:notice] = 'Alcohol was updated'
       redirect_to alcohol_path(@alcohol)
     else
       flash[:error] = "Something went wrong, try again"

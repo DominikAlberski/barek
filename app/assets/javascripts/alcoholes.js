@@ -7,7 +7,7 @@ $(document).ready(function() {
   var wine = $('.wine');
   var whiskey = $('.whiskey');
 
-  // bardzo brzydki kawałek kodu do poprawy:
+  // do poprawy:
 
   kind.change(function(e) {
     var chosenIndex = kind[0].options.selectedIndex;
@@ -36,7 +36,12 @@ $(document).ready(function() {
       liqueur.addClass('hidden');
       whiskey.removeClass('hidden');
     }
+    else if (selectedValue == 'other' || null) {
+      vodka.addClass('hidden');
+      wine.addClass('hidden');
+      liqueur.addClass('hidden');
+      whiskey.addClass('hidden');
+    }
   });
-
 console.log('koniec kodu');
 });
