@@ -3,6 +3,7 @@ class AlcoholsController < ApplicationController
 
   def index
     @alcohols = Alcohol.all
+    @user_alcohols = current_user.alcohols.all if user_signed_in?      
   end
 
   def show
