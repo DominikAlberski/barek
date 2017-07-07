@@ -1,0 +1,12 @@
+%header
+  %h1 Alcoholes
+.name
+  %p= link_to @alcohol.name, edit_alcohol_path(@alcohol)
+.details
+  %p= @details
+.photo
+  = image_tag @alcohol.photo.url, class: 'alcohol_img'
+%ul
+  Avalble coctails
+  - @coctails.each do |coctail|
+    %li= link_to coctail.name, coctail_path(coctail)

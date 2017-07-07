@@ -1,0 +1,19 @@
+.container
+  %h1 Alcohols
+  = link_to "Add new", new_alcohol_path, class: 'btn btn-info'
+  .user_alcohols
+    - if @user_alcohols
+      %ul
+        = @user_alcohols.first.user.username
+        Alcohols:
+        - @user_alcohols.each do |alcohol|
+          %li
+            = link_to alcohol.name, alcohol_path(alcohol[:id]), class: 'btn btn-info'
+            = link_to "delete", alcohol_path(alcohol[:id]), method: :delete,data: { confirm: "Cofirm delete?" }, class: 'btn btn-danger'
+  .alcohols
+    %ul 
+      Alcohols
+      - @alcohols.each do |alcohol|
+        %li
+          = link_to alcohol.name, alcohol_path(alcohol[:id]), class: 'btn btn-info'
+          = link_to "delete", alcohol_path(alcohol[:id]), method: :delete,data: { confirm: "Cofirm delete?" }, class: 'btn btn-danger'

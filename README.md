@@ -17,7 +17,7 @@ when creating an alcohol user shuld not be able to crete 2 difrent kinds of alco
 alcohol index view display
     basic info from alcohol model
     details from proper kind model after click on button more...
-    option of diplay: list, box
+    option of display: list, box
 
 change alcohol index to show only curent user alcohols when user is sign in with option to see all alcohols
 
